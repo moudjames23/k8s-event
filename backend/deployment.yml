@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-event-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-event
+  template:
+    metadata:
+      labels:
+        app: backend-event
+    spec:
+      containers:
+      - name: backend-event
+        image: moudjames23/backend-event
+        ports:
+        - containerPort: 8080

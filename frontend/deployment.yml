@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-event-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-event
+  template:
+    metadata:
+      labels:
+        app: frontend-event
+    spec:
+      containers:
+      - name: frontend-event
+        image: moudjames23/frontend-event
+        env:
+        - name: VITE_BACKEND_URL
+          value: "http://backend-event:8080"
+        ports:
+        - containerPort: 5173

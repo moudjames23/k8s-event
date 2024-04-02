@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: event-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /backend
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-event-service
+            port:
+              number: 8080
+      - path: /frontend
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-event-service
+            port:
+              number: 5173
